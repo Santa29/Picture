@@ -6,7 +6,9 @@ def hedgehog(x, y, size):
 
 
 def mushroom(x, y, angle, size):
-    pass
+    """Coordinates is the right and left corners of the rectangle, which is the border of oval"""
+    brushColor("red")
+    oval(x, y, x + size * 4, y + size * 4)
 
 
 def light(x, y, light_width, light_height):
