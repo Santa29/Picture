@@ -5,7 +5,7 @@ def hedgehog(x, y, size):
     pass
 
 
-def mushroom(angle, size):
+def mushroom(x, y, angle, size):
     pass
 
 
@@ -28,4 +28,5 @@ light(0, 0, width / 15, height / 3 * 2 + 10)
 light(0 + width / 7, 0, width / 6, height - 15)
 light(0.9 * width, 0, width * 0.09, 0.75 * height)
 light(0.75 * width, 0, 0.1 * width, height * 0.85)
+mushroom(width / 2, height / 2, 0, 15)
 run()
