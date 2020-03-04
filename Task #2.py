@@ -2,12 +2,10 @@ from graph import *
 import math
 
 
-def hedgehog(x, y, size):
-    pass
-
-
 def mushroom(x, y, angle, size):
     """Draw the mushroom. Coordinates is the right and left corners of the rectangle, which is the border of oval"""
+    brushColor('white')
+    oval(x - size, y, x + size, y + 5 * size)
     brushColor("red")
     circle(x, y, size)
     y_right_top = y - size * math.sin(angle)
@@ -17,12 +15,22 @@ def mushroom(x, y, angle, size):
     circle(x_right, y_right_top, size)
     circle(x_left, y_left_top, size)
     penColor('red')
-    point1 = (x_right, y_right_top + size)  # Points to draw the rectangle
+    point1 = (x_right, y_right_top + size)  # Points to draw the rectangle. You must do it in cycle!!!!
     point2 = (x_left, y_left_top + size)
     point3 = (x_left, y_left_top - size)
     point4 = (x_right, y_right_top - size)
     polygon([point1, point2, point3, point4])
     penColor('black')
+    brushColor('white')
+    oval(x, y, x + size*0.7, y + size*0.4)
+    oval(x - size, y, x - size * 1.7, y - size * 0.4)
+    oval(x + size, y, x + size * 1.7, y - size * 0.4)
+    oval(x - size * 1.3, y + size * 0.5, x - size * 2, y + size * 0.9)
+    oval(x + size * 1.3, y + size * 0.5, x + size * 2, y + size * 0.9)
+
+
+def hedgehog(x, y, size):
+    pass
 
 
 def light(x, y, light_width, light_height):
