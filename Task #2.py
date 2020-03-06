@@ -6,12 +6,14 @@ def oval_with_angle(x, y, size, angle, color):
     """Function draw the oval with given angle , coordinates, size, color"""
     brushColor(color)
     penColor(color)
-    point_massive_for_oval = [(x + 2 * size * math.cos(angle), y + 2 * size * math.sin(angle))]
-    for j in range(1, 361):
-        k = (x + 3 * size * math.cos(j), y + size * math.sin(j))
+    point_massive_for_oval = []
+    for j in range(361):
+        a = 3 * size * math.cos(j)
+        b = size * math.sin(j)
+        a, b = a * math.cos(angle) - b * math.sin(angle), -1 * a * math.sin(angle) + b * math.cos(angle)
+        k = (a + x, b + y)
         point_massive_for_oval.append(k)
     polygon(point_massive_for_oval)
-    print(point_massive_for_oval)
     brushColor('black')
 
 
@@ -44,5 +46,5 @@ light(0 + width / 7, 0, width / 6, height - 15)
 light(0.9 * width, 0, width * 0.09, 0.75 * height)
 light(0.75 * width, 0, 0.1 * width, height * 0.85)
 mushroom(width / 2, height / 2, 30, 15)
-oval_with_angle(width / 2, height / 2, 20, 0, 'red')
+oval_with_angle(width / 2, height / 2, 50, 7, 'red')
 run()
