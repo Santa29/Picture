@@ -21,15 +21,27 @@ def oval_with_angle(x, y, size, angle, color):
 
 def spots(x, y, angle, size):
     """Draw the spots on mushroom. Coordinates mus be the same as in the head function mushroom"""
+    a = [[0, 0.2], [-0.7, 0.6], [0.65, - 0.4], [-1.7, 0.2], [1.1, 0.2], [-0.65, -0.65]]
     if angle == 0:
-        a = [[0, 0.2], [-0.7, 0.6], [0.65, - 0.4], [-1.7, 0.2], [1.1, 0.2], [-0.65, -0.65]]
-        for j in range(len(a)):
+        for j in range(6):
             a[j][0], a[j][1] = x + a[j][0] * size, y + a[j][1] * size
             oval_with_angle(a[j][0], a[j][1], random.randint(10, 19) / 100 * size, angle, 'white')
-            print(a[j][0], a[j][1], '/n')
+    elif angle > 0:
+        for j in range(6):
+            a[j][0], a[j][1] = x + a[j][0] * size, y + a[j][1] * size
+            length = math.pow(pow(x - a[j][0], 2) + pow(y - a[j][1], 2), 0.5)
+            start_angle = math.asin((a[j][0] - x)/length)
+            delta_x = length * math.sin(start_angle + angle)
+            delta_y = length * math.cos(start_angle + angle)
+            oval_with_angle(x + delta_x, y + delta_y, random.randint(10, 19) / 100 * size, angle, 'white')
     else:
         for j in range(6):
-            pass
+            a[j][0], a[j][1] = x + a[j][0] * size, y + a[j][1] * size
+            length = math.pow(pow(x - a[j][0], 2) + pow(y - a[j][1], 2), 0.5)
+            start_angle = math.asin((a[j][0] - x) / length)
+            delta_x = length * math.sin(start_angle - angle)
+            delta_y = length * math.cos(start_angle - angle)
+            oval_with_angle(x + delta_x, y + delta_y, random.randint(10, 19) / 100 * size, angle, 'white')
 
 
 def mushroom(x, y, angle, size):
