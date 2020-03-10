@@ -31,16 +31,16 @@ def spots(x, y, angle, size):
             a[j][0], a[j][1] = x + a[j][0] * size, y + a[j][1] * size
             length = math.pow(pow(x - a[j][0], 2) + pow(y - a[j][1], 2), 0.5)
             start_angle = math.asin((a[j][0] - x)/length)
-            delta_x = length * math.sin(start_angle + angle)
-            delta_y = length * math.cos(start_angle + angle)
+            delta_x = length * math.sin(start_angle + math.radians(angle))
+            delta_y = length * math.cos(start_angle + math.radians(angle))
             oval_with_angle(x + delta_x, y + delta_y, random.randint(10, 19) / 100 * size, angle, 'white')
     else:
         for j in range(6):
             a[j][0], a[j][1] = x + a[j][0] * size, y + a[j][1] * size
             length = math.pow(pow(x - a[j][0], 2) + pow(y - a[j][1], 2), 0.5)
             start_angle = math.asin((a[j][0] - x) / length)
-            delta_x = length * math.sin(start_angle - angle)
-            delta_y = length * math.cos(start_angle - angle)
+            delta_x = length * math.sin(start_angle - math.radians(angle))
+            delta_y = length * math.cos(start_angle - math.radians(angle))
             oval_with_angle(x + delta_x, y + delta_y, random.randint(10, 19) / 100 * size, angle, 'white')
 
 
@@ -77,5 +77,5 @@ light(0, 0, width / 15, height / 3 * 2 + 10)
 light(0 + width / 7, 0, width / 6, height - 15)
 light(0.9 * width, 0, width * 0.09, 0.75 * height)
 light(0.75 * width, 0, 0.1 * width, height * 0.85)
-mushroom(width / 2, height / 2, 0, 20)
+mushroom(width / 2, height / 2, -15, 20)
 run()
