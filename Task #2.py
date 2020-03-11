@@ -54,10 +54,11 @@ def mushroom(x, y, angle, size):
     spots(x, y, angle, size)
 
 
-def first_plan(max_width, width_mushrooms, height_max, size):
+def first_plan(max_width, width_mushrooms, height_max):
     """Draw the line of mushrooms on the first plane"""
     for j in range(5):
-        mushroom((max_width - width_mushrooms) / 5 * j + width_mushrooms, height_max, random.randint(-15, 15), size)
+        x_coord = (max_width - width_mushrooms) / 5 * j + width_mushrooms
+        mushroom(x_coord, height_max, random.randint(-15, 15), random.randint(15, 50))
 
 
 def hedgehog(x, y, size):
@@ -84,5 +85,5 @@ light(0 + width / 7, 0, width / 6, height - 15)
 light(0.9 * width, 0, width * 0.09, 0.75 * height)
 light(0.75 * width, 0, 0.1 * width, height * 0.85)
 mushroom(width / 2, height / 2, -15, 20)
-first_plan(width, width / 2, height * 0.8, 30)
+first_plan(width, width / 2, height * 0.93)
 run()
