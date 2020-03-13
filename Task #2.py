@@ -71,7 +71,17 @@ def spine(x, y, angle, size):
 
 
 def hedgehog(x, y, size):
-    pass
+    brushColor(66, 48, 48)
+    oval(x - 1.1 * size, y + 0.38 * size, x - 0.7 * size, y + 0.22 * size)
+    oval(x + 1.1 * size, y + 0.38 * size, x + 0.7 * size, y + 0.22 * size)
+    oval(x - size, y - 0.5 * size, x + size, y + 0.5 * size)
+    oval(x - 0.9 * size, y + 0.48 * size, x - 0.5 * size, y + 0.32 * size)
+    oval(x + 0.9 * size, y + 0.48 * size, x + 0.5 * size, y + 0.32 * size)
+    oval(x + 0.8 * size, y + 0.2 * size, x + 1.5 * size, y - 0.2 * size)
+    brushColor('black')
+    oval(x + 1.45 * size, y, x + 1.52 * size, y - 0.06 * size)
+    oval(x + 1.1 * size, y + 0.06 * size, x + 1.2 * size, y - 0.06 * size)
+    oval(x + 1.25 * size, y - 0.16 * size, x + 1.35 * size, y - 0.04 * size)
 
 
 def light(x, y, light_width, light_height):
@@ -94,4 +104,5 @@ light(0 + width / 7, 0, width / 6, height - 15)
 light(0.9 * width, 0, width * 0.09, 0.75 * height)
 light(0.75 * width, 0, 0.1 * width, height * 0.85)
 first_plan(width, width / 2, height * 0.93)
+hedgehog(width / 2, height / 2, 150)
 run()
