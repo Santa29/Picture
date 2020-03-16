@@ -62,15 +62,26 @@ def first_plan(max_width, width_mushrooms, height_max):
 
 
 def spine(x, y, angle, size):
+    """Draw the standalone spine in x, y coordinates with angle and size"""
     penColor('black')
     brushColor('black')
     x1 = (x + size * math.sin(angle), y - size * math.cos(angle))
-    x2 = (x + 0.1* size * math.cos(angle), y + math.sin(angle))
+    x2 = (x + 0.1 * size * math.cos(angle), y + math.sin(angle))
     points = [(x, y), x1, x2]
     polygon(points)
 
 
+def spines_row(x, y, element_numbers, row_length, size):
+    """Draw the row of doubled spines. Starts from x, y, ends on x + size. Row_length is the length between elements"""
+    for j in range(element_numbers):
+        angle = math.radians(randint(15, 30))
+        spine(x + row_length, y, angle, size)
+        spine(x + row_length + size / element_numbers, y, angle, size)
+        x += row_length
+
+
 def hedgehog(x, y, size):
+    """Draw the hedgehog"""
     brushColor(66, 48, 48)
     oval(x - 1.1 * size, y + 0.38 * size, x - 0.7 * size, y + 0.22 * size)
     oval(x + 1.1 * size, y + 0.38 * size, x + 0.7 * size, y + 0.22 * size)
@@ -79,6 +90,10 @@ def hedgehog(x, y, size):
     oval(x + 0.9 * size, y + 0.48 * size, x + 0.5 * size, y + 0.32 * size)
     oval(x + 0.8 * size, y + 0.2 * size, x + 1.5 * size, y - 0.2 * size)
     brushColor('black')
+    k = 0
+    for j in range(7):
+        pass
+    spines_row(x - size, y, 8, size / 4, 1.5 * size)
     oval(x + 1.45 * size, y, x + 1.52 * size, y - 0.06 * size)
     oval(x + 1.1 * size, y + 0.06 * size, x + 1.2 * size, y - 0.06 * size)
     oval(x + 1.25 * size, y - 0.16 * size, x + 1.35 * size, y - 0.04 * size)
