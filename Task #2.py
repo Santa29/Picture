@@ -79,7 +79,7 @@ def spines_random(start_x, start_y, element_numbers, size, hedgehog_size):
         y = random.randrange(int(start_y - y), int(start_y + y))
         angle = math.radians(randint(-30, 30))
         spine(x, y, angle, size)
-        spine(x + size / element_numbers, y, angle, size)
+        spine(x - size / element_numbers, y, angle, size)
 
 
 def hedgehog(x, y, size):
@@ -90,12 +90,23 @@ def hedgehog(x, y, size):
     oval(x - size, y - 0.5 * size, x + size, y + 0.5 * size)
     oval(x - 0.9 * size, y + 0.48 * size, x - 0.5 * size, y + 0.32 * size)
     oval(x + 0.9 * size, y + 0.48 * size, x + 0.5 * size, y + 0.32 * size)
-    oval(x + 0.8 * size, y + 0.2 * size, x + 1.5 * size, y - 0.2 * size)
-    spines_random(x, y, 130, 1.5 * size, size)
+    spines_random(x, y, 90, 0.8 * size, size)
     brushColor(66, 48, 48)
+    oval(x + 0.8 * size, y + 0.2 * size, x + 1.5 * size, y - 0.2 * size)
+    brushColor('black')
     oval(x + 1.45 * size, y, x + 1.52 * size, y - 0.06 * size)
     oval(x + 1.1 * size, y + 0.06 * size, x + 1.2 * size, y - 0.06 * size)
     oval(x + 1.25 * size, y - 0.16 * size, x + 1.35 * size, y - 0.04 * size)
+    mushroom(x + 0.1 * size, y - 1.1 * size, -15, 30)
+    brushColor('red')
+    penColor(66, 48, 48)
+    penSize(5)
+    oval(x + 1.2 * size, y - 0.2 * size, x + 0.4 * size, y - size)
+    brushColor(163, 136, 69)
+    oval(x - 1.2 * size, y - 0.2 * size, x - 0.4 * size, y - size)
+    oval(x - 1.1 * size, y - 0.2 * size, x - 0.3 * size, y - size)
+    penSize(1)
+    spines_random(x, y, 80, 0.8 * size, size)
 
 
 def light(x, y, light_width, light_height):
