@@ -74,9 +74,9 @@ def spine(x, y, angle, size):
 def spines_random(start_x, start_y, element_numbers, size, hedgehog_size):
     """Draw the field of spines on the back of hedgehog"""
     for j in range(element_numbers):
-        x = random.randrange(start_x - hedgehog_size, start_x + hedgehog_size)
-        y = pow(1 - pow(x - start_x, 2) / pow(hedgehog_size, 2), 0.5) * 0.5 * hedgehog_size
-        y = random.randrange(int(start_y - y), int(start_y + y))
+        x = random.randrange(int(start_x - hedgehog_size), int(start_x + hedgehog_size))
+        y = pow(math.fabs(1 - pow(x - start_x, 2) / pow(hedgehog_size, 2)), 0.5) * 0.5 * hedgehog_size
+        y = random.randrange(int(start_y - y - 1), int(start_y + y + 1))
         angle = math.radians(randint(-30, 30))
         spine(x, y, angle, size)
         spine(x - size / element_numbers, y, angle, size)
@@ -97,7 +97,7 @@ def hedgehog(x, y, size):
     oval(x + 1.45 * size, y, x + 1.52 * size, y - 0.06 * size)
     oval(x + 1.1 * size, y + 0.06 * size, x + 1.2 * size, y - 0.06 * size)
     oval(x + 1.25 * size, y - 0.16 * size, x + 1.35 * size, y - 0.04 * size)
-    mushroom(x + 0.1 * size, y - 1.1 * size, -15, 30)
+    mushroom(x + 0.1 * size, y - 1.1 * size, -15, size * 0.2)
     brushColor('red')
     penColor(66, 48, 48)
     penSize(5)
@@ -125,9 +125,12 @@ penColor(0, 0, 0)
 brushColor('grey')
 rectangle(0, height / 3 * 2, width, height)
 light(0, 0, width / 15, height / 3 * 2 + 10)
+hedgehog(width * 0.3, height / 3 * 2, 60)
 light(0 + width / 7, 0, width / 6, height - 15)
 light(0.9 * width, 0, width * 0.09, 0.75 * height)
 light(0.75 * width, 0, 0.1 * width, height * 0.85)
 first_plan(width, width / 2, height * 0.93)
-hedgehog(width / 2, height / 2, 150)
+hedgehog(width / 3 * 2, height * 0.8, 150)
+hedgehog(width * 0.01, height / 8 * 7, 60)
+hedgehog(width * 0.95, height / 3 * 2, 90)
 run()
